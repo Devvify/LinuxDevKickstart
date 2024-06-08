@@ -35,10 +35,16 @@ Welcome to **LinuxDevKickstart**! This repository contains a comprehensive scrip
 
 ## Command-Line Arguments
 
-You can also pass command-line arguments to customize the setup process:
+You can customize the setup process by passing the following command-line arguments to `setup.sh`:
 
-```sh
-./setup.sh --web-server nginx --db-server mysql --php-version 8.2 --php-extensions curl,gd --install-dir /usr/local/bin --log-file setup.log
+| Argument | Description | Example |
+| --- | --- | --- |
+| `--web-server` | Specifies the web server to use | `nginx` |
+| `--db-server` | Specifies the database server to use | `mysql` |
+| `--php-version` | Specifies the PHP version to use | `8.2` |
+| `--php-extensions` | Specifies the PHP extensions to install | `curl,gd` |
+| `--install-dir` | Specifies the installation directory | `/usr/local/bin` |
+| `--log-file` | Specifies the log file | `setup.log` |
 
 
 ## Usage/Examples
@@ -53,6 +59,5 @@ Feel free to open issues and submit pull requests for improvements or bug fixes.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
-
 This project is licensed under the MIT License. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
+```
