@@ -51,7 +51,36 @@ You can customize the setup process by passing the following command-line argume
 
 ../setup.sh --web-server apache2 --db-server mariadb --php-version 8.1 --php-extensions mbstring,xml,zip --install-dir /usr/local/bin --log-file setup.log
 
+## Customization
 
+You can customize the setup process by choosing from the following options:
+
+### Web Servers:
+
+- Nginx
+- Apache2
+
+### Database Servers:
+
+- MySQL
+- MariaDB
+
+### PHP Versions:
+
+- Default: 8.1
+- Option: 8.2
+
+### PHP Extensions:
+
+- php-mysql (MySQL database support)
+- php-pgsql (PostgreSQL database support)
+- php-sqlite3 (SQLite database support)
+- php-curl (cURL library support)
+- php-gd (GD image library support)
+- php-mbstring (Multibyte string support)
+- php-xml (XML parsing support)
+- php-zip (ZIP archive support)
+- php-intl (Internationalization support)
 
 ## Contributing
 
@@ -59,5 +88,5 @@ Feel free to open issues and submit pull requests for improvements or bug fixes.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Devvify/LinuxDevKickstart/blob/main/LICENSE.md) file for details.
 ```
