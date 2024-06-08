@@ -89,4 +89,3 @@ Feel free to open issues and submit pull requests for improvements or bug fixes.
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/Devvify/LinuxDevKickstart/blob/main/LICENSE.md) file for details.
-```
