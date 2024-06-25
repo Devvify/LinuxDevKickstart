@@ -18,7 +18,7 @@ Welcome to **LinuxDevKickstart**! This repository contains a comprehensive scrip
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/yourusername/LinuxDevKickstart.git
+    git clone https://github.com/Devvify/LinuxDevKickstart.git
     cd LinuxDevKickstart
     ```
 
