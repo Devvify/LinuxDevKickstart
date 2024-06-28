@@ -160,51 +160,42 @@ esac
 
 # PHP Version Selection
 if [ -z "$php_version_choice" ]; then
-    echo "Choose PHP version (default is 8.1):"
-    echo "1. PHP 7.4"
-    echo "2. PHP 8.0"
-    echo "3. PHP 8.1"
-    echo "4. PHP 8.2"
-    read -p "Enter your choice (1, 2, 3 or 4): " php_choice
+  echo "Choose PHP version:"
+  select php_version in "7.4" "8.0" "8.1" "8.2"; do 
+    case $php_version in
+      "7.4") 
+        sudo add-apt-repository ppa:ondrej/php
+        sudo apt update
+        ;;
+    esac
+    break
+  done
 else
-    php_choice=$php_version_choice
+  php_version=$php_version_choice
 fi
 
-case $php_choice in
-    1 | "7.4")
-        php_version="7.4"
-        ;;
-    2 | "8.0")
-        php_version="8.0"
-        ;;
-    3 | "8.1")
-        php_version="8.1"
-        ;;
-    4 | "8.2")
-        php_version="8.2"
-        ;;
-    *)
-        echo "Invalid choice. Please enter 1, 2, 3 or 4."
-        echo "$(date): Invalid PHP version choice." >> $log_file
-        exit 1
-        ;;
-esac
-
-# Install PHP and extensions
+# Install PHP and extensions (UPDATED)
 php_extensions="php$php_version php$php_version-cli php$php_version-fpm"
 
 # Add default PHP extensions
-default_php_extensions=("php$php_version-mysql" "php$php_version-pgsql" "php$php_version-sqlite3" "php$php_version-curl" "php$php_version-gd" "php$php_version-mbstring" "php$php_version-xml" "php$php_version-zip" "php$php_version-intl")
+default_php_extensions=("php$php_version-mysql php$php_version-pgsql php$php_version-sqlite3 php$php_version-curl php$php_version-gd php$php_version-mbstring php$php_version-xml php$php_version-zip php$php_version-intl")
 for ext in "${default_php_extensions[@]}"; do
-    php_extensions="$php_extensions $ext"
+  php_extensions="$php_extensions $ext"
 done
 
 # Add additional PHP extensions from command line arguments
 for ext in "${additional_php_extensions[@]}"; do
-    php_extensions="$php_extensions php$php_version-$ext"
+  php_extensions="$php_extensions php$php_version-$ext"
 done
 
+# Install PHP and default extensions
 sudo apt install -y $php_extensions
+
+# Install PHP extension for MariaDB
+if [[ "$db_server" == "MariaDB" ]]; then
+  sudo apt install -y php$php_version-mariadb
+fi
+
 check_success "PHP and extensions installation"
 
 # Install other essential tools
